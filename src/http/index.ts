@@ -98,3 +98,12 @@ export const orderSuccess = (res: any): Promise<axiosConfig<null>> => {
     },
   })
 }
+
+// 获取所有订单信息
+export const requestOrder = (id: string): Promise<axiosConfig<any>> => {
+  return instance.get('patient/findOrderByPid', {
+    params: {
+      pId: id,
+    },
+  })
+}
