@@ -1,7 +1,15 @@
 <script setup lang="ts">
+import { clearToken } from '@/http/storage'
+import { useRouter } from 'vue-router'
+
 const props = defineProps<{
   username: string
 }>()
+const router = useRouter()
+const handleClick = () => {
+  clearToken()
+  router.push('/login')
+}
 </script>
 
 <template>
@@ -15,7 +23,11 @@ const props = defineProps<{
     </div>
     <div class="words">
       <span>欢迎您{{ props.username }}<b></b>&nbsp;</span>
-      <span><el-button type="danger" size="mini">退出登录</el-button></span>
+      <span
+        ><el-button @click="handleClick" type="danger" size="mini"
+          >退出登录</el-button
+        ></span
+      >
     </div>
   </el-header>
 </template>

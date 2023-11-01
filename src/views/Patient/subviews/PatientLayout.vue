@@ -15,6 +15,7 @@ onMounted(async () => {
     })
   orderPeople.value = data.data as number
 })
+
 onMounted(async () => {
   const { data } = await requestBed()
   if (data.status !== 200)
