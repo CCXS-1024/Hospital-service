@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Login from '../views/Login.vue'
 import { getToken } from '@/http/storage'
 import Admin from '@/views/AdminMain.vue'
-//
+//病人模块组件
 import Patient from '@/views/Patient/PatientMain.vue'
 import PatientLayout from '@/views/Patient/subviews/PatientLayout.vue'
 import OrderOperate from '@/views/Patient/subviews/OrderOperate.vue'
@@ -10,7 +10,9 @@ import SectionMessage from '@/views/Patient/subviews/SectionMessage.vue'
 import MyOrder from '@/views/Patient/subviews/MyOrder.vue'
 import MyBed from '@/views/Patient/subviews/MyBed.vue'
 import PatientCard from '@/views/Patient/subviews/PatientCard.vue'
-
+// 医生
+import DoctorMain from '@/views/Doctor/DoctorMain.vue'
+import DoctorLayout from '@/views/Doctor/subviews/DoctorLayout.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -41,9 +43,6 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/patientLayout',
         component: PatientLayout,
-        meta: {
-          requireAuth: true,
-        },
       },
       {
         path: '/oderOperate',
@@ -64,6 +63,19 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/patientCard',
         component: PatientCard,
+      },
+    ],
+  },
+  {
+    path: '/doctor',
+    component: DoctorMain,
+    meta: {
+      reqireAuth: true,
+    },
+    children: [
+      {
+        path: '/doctorLayout',
+        component: DoctorLayout,
       },
     ],
   },

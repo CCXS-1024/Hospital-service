@@ -15,6 +15,12 @@ interface dataItem {
   token: string
 }
 
+interface DoctorItem {
+  dId: string
+  dName: string
+  token: string
+}
+
 interface SectionDoc {
   doctors: string[]
 }
@@ -32,7 +38,10 @@ interface SelectTime {
 export const patientLogin = (data: any): Promise<axiosConfig<dataItem>> => {
   return instance.post('patient/login', data)
 }
-
+// 医生登录
+export const doctorLogin = (data: any): Promise<axiosConfig<DoctorItem>> => {
+  return instance.post('doctor/login', data)
+}
 // 注册病人接口
 export const registerUser = (data: any): Promise<axiosConfig<null>> => {
   return instance.get('patient/addPatient', {
@@ -132,6 +141,16 @@ export const requestPatient = (
   return instance.get('doctor/findPatientById', {
     params: {
       pId: id,
+    },
+  })
+}
+
+// 医生
+
+export const requestNowPeople = (id: string): Promise<axiosConfig<number>> => {
+  return instance.get('order/orderPeopleByDid', {
+    params: {
+      dId: id,
     },
   })
 }
