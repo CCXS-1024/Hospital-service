@@ -1,5 +1,5 @@
 import instance from './instance'
-
+import type { OrderList, PatientInfo } from '@/types'
 interface axiosConfig<T> {
   data: {
     status: number
@@ -102,6 +102,34 @@ export const orderSuccess = (res: any): Promise<axiosConfig<null>> => {
 // 获取所有订单信息
 export const requestOrder = (id: string): Promise<axiosConfig<any>> => {
   return instance.get('patient/findOrderByPid', {
+    params: {
+      pId: id,
+    },
+  })
+}
+
+export const priceClick = (oId: string): Promise<axiosConfig<any>> => {
+  return instance.get('order/updatePrice', {
+    params: {
+      oId,
+    },
+  })
+}
+
+export const requestBedOrder = (
+  id: string
+): Promise<axiosConfig<OrderList[]>> => {
+  return instance.get('bed/findBedByPid', {
+    params: {
+      pId: id,
+    },
+  })
+}
+
+export const requestPatient = (
+  id: string
+): Promise<axiosConfig<PatientInfo>> => {
+  return instance.get('doctor/findPatientById', {
     params: {
       pId: id,
     },

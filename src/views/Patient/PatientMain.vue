@@ -2,12 +2,7 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import jwtDecode from 'jwt-decode'
-import {
-  getToken,
-  clearToken,
-  getActivePath,
-  setActivePath,
-} from '@/http/storage'
+import { getToken, getActivePath, setActivePath } from '@/http/storage'
 
 const route = useRoute()
 const router = useRouter()
@@ -60,7 +55,7 @@ userName.value = tokenDecode(getToken()).pName
           </el-menu-item>
           <el-menu-item index="myBed" @click="menuClick('myBed')">
             <i class="iconfont icon-r-home" style="font-size: 22px">
-              住院信息</i
+              我的住院信息</i
             >
           </el-menu-item>
           <el-menu-item index="patientCard" @click="menuClick('patientCard')">
