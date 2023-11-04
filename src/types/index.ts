@@ -22,3 +22,34 @@ export interface PatientInfo {
   pPhone: string
   pid: string
 }
+
+export interface ToDayOrderList {
+  oid: number
+  pid: number
+  pName: string
+  oStart: string
+}
+
+export interface PageItem<T, Z> {
+  total: number
+  pageNumber: number
+  size: number
+  drugs: T[]
+  checks: Z[]
+}
+
+export interface DrugItem {
+  drId: number
+  drName: string
+  drPrice: number
+  drNumber: number
+  drUnit: string
+  drPublisher: string
+  priceNum?: number
+}
+
+export interface CheckItem {
+  chId: number
+  chName: string
+  chPrice: number
+}

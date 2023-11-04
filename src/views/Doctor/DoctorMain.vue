@@ -1,8 +1,18 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute, useRouter } from 'vue-router'
+import { ref } from 'vue'
 import AdminHeader from '@/components/AdminHeader.vue'
+import { setActivePath } from '@/http/storage'
 
-const menuClick = (string) => {}
+const activePath = ref<string>('doctorLayout')
+const route = useRoute()
+const router = useRouter()
+
+const menuClick = (path: string) => {
+  activePath.value = path
+  setActivePath(path)
+  if (route.path !== '/' + path) router.push(path)
+}
 </script>
 
 <template>

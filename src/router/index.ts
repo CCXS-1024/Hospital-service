@@ -13,6 +13,10 @@ import PatientCard from '@/views/Patient/subviews/PatientCard.vue'
 // 医生
 import DoctorMain from '@/views/Doctor/DoctorMain.vue'
 import DoctorLayout from '@/views/Doctor/subviews/DoctorLayout.vue'
+import DoctorOrder from '@/views/Doctor/subviews/DoctorOrder.vue'
+import DealOrder from '@/views/Doctor/subviews/DealOrder.vue'
+import DoctorHisOrder from '@/views/Doctor/subviews/DoctorHisOrder.vue'
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -76,6 +80,18 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/doctorLayout',
         component: DoctorLayout,
+      },
+      {
+        path: '/orderToday',
+        component: DoctorOrder,
+      },
+      {
+        path: '/dealOrder',
+        component: DealOrder,
+      },
+      {
+        path: '/doctorOrder',
+        component: DoctorHisOrder,
       },
     ],
   },

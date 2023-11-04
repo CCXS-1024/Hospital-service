@@ -1,5 +1,12 @@
 import instance from './instance'
-import type { OrderList, PatientInfo } from '@/types'
+import type {
+  OrderList,
+  PatientInfo,
+  ToDayOrderList,
+  PageItem,
+  DrugItem,
+  CheckItem,
+} from '@/types'
 interface axiosConfig<T> {
   data: {
     status: number
@@ -135,6 +142,7 @@ export const requestBedOrder = (
   })
 }
 
+//  获取患者信息
 export const requestPatient = (
   id: string
 ): Promise<axiosConfig<PatientInfo>> => {
@@ -146,11 +154,97 @@ export const requestPatient = (
 }
 
 // 医生
-
 export const requestNowPeople = (id: string): Promise<axiosConfig<number>> => {
   return instance.get('order/orderPeopleByDid', {
     params: {
       dId: id,
+    },
+  })
+}
+
+export const requestToDayOrder = (
+  dId: string,
+  oStart: string
+): Promise<axiosConfig<ToDayOrderList[]>> => {
+  return instance.get('doctor/findOrderByNull', {
+    params: {
+      dId,
+      oStart,
+    },
+  })
+}
+
+export const requestDrug = (
+  search: string,
+  size: number,
+  pageNumber: number
+): Promise<axiosConfig<PageItem<DrugItem, null>>> => {
+  return instance.get('drug/findAllDrugs', {
+    params: {
+      size: size,
+      pageNumber,
+      query: search,
+    },
+  })
+}
+
+export const addDrugBy = (drId: number): Promise<axiosConfig<DrugItem>> => {
+  return instance.get('drug/findDrug', {
+    params: {
+      drId: drId,
+    },
+  })
+}
+
+export const requestAllCheck = (
+  search: string,
+  size: number,
+  pageNumber: number
+): Promise<axiosConfig<PageItem<null, CheckItem>>> => {
+  return instance.get('check/findAllChecks', {
+    params: {
+      size: size,
+      pageNumber,
+      query: search,
+    },
+  })
+}
+
+export const addCheckBy = (id: number) => {
+  return instance.get('check/findCheck', {
+    params: {
+      chId: id,
+    },
+  })
+}
+
+// 根据 id来减少药品的数量
+
+export const reduceDrugNumber = (drId: number, usedNumber: number) => {
+  return instance.get('drug/reduceDrugNumber', {
+    params: {
+      drId,
+      usedNumber,
+    },
+  })
+}
+
+export const submitOrder = (data: any) => {
+  return instance.post('order/updateOrder', data)
+}
+
+export const requestOrders = (
+  id: string,
+  size: number,
+  pageNumber: number,
+  query: string
+) => {
+  return instance.get('order/findOrderByDid', {
+    params: {
+      dId: id,
+      size,
+      pageNumber,
+      query,
     },
   })
 }
