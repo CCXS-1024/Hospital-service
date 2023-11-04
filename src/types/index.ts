@@ -53,3 +53,17 @@ export interface CheckItem {
   chName: string
   chPrice: number
 }
+
+export interface DoctorHisItem {
+  oId: number
+  dId: number
+  pId: number
+  oStart: string
+  oEnd: string
+  oRecord: string
+  ODrug: string
+  oCheck: string
+  oTotalPrice: string
+  oPriceState: string
+  oState: number
+}

@@ -6,6 +6,7 @@ import type {
   PageItem,
   DrugItem,
   CheckItem,
+  DoctorHisItem,
 } from '@/types'
 interface axiosConfig<T> {
   data: {
@@ -41,6 +42,12 @@ interface SelectTime {
   tTOe: string
 }
 
+export interface OrderListConfig {
+  total: number
+  pages: number
+  pageNumber: number
+  orders: DoctorHisItem[]
+}
 //  病人登录接口
 export const patientLogin = (data: any): Promise<axiosConfig<dataItem>> => {
   return instance.post('patient/login', data)
@@ -238,7 +245,7 @@ export const requestOrders = (
   size: number,
   pageNumber: number,
   query: string
-) => {
+): Promise<axiosConfig<OrderListConfig>> => {
   return instance.get('order/findOrderByDid', {
     params: {
       dId: id,
