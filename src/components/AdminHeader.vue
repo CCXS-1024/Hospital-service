@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 const props = defineProps<{
   username: string
+  type?: string
 }>()
 const router = useRouter()
 const handleClick = () => {
@@ -22,7 +23,7 @@ const handleClick = () => {
       </span>
     </div>
     <div class="words">
-      <span>欢迎您{{ props.username }}<b></b>&nbsp;</span>
+      <span>欢迎您{{ props.username }} {{ type }}<b></b>&nbsp;</span>
       <span
         ><el-button @click="handleClick" type="danger" size="mini"
           >退出登录</el-button

@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useRouter } from 'vue-router'
 
-import { doctorLogin, patientLogin, registerUser } from '../http'
+import { doctorLogin, loginAdmin, patientLogin, registerUser } from '../http'
 import { setToken } from '../http/storage'
 interface LofinForm {
   id: string
@@ -208,6 +208,18 @@ const submitLoginForm = (loginFormRef: FormInstance | undefined) => {
     }
 
     if (role.value === 'administrator') {
+      const params = new URLSearchParams()
+      params.append('aId', loginForm.value.id)
+      params.append('aPassword', loginForm.value.password)
+
+      const { data } = await loginAdmin(params)
+      if (data.status !== 200)
+        return ElMessage({
+          type: 'error',
+          message: '用户密码错误',
+        })
+      setToken(data.data.token)
+      router.push('/admin')
     }
   })
 }

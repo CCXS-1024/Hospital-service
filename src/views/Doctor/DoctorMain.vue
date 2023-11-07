@@ -1,23 +1,28 @@
 <script setup lang="ts">
 import { RouterView, useRoute, useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import AdminHeader from '@/components/AdminHeader.vue'
-import { setActivePath } from '@/http/storage'
+import { getToken, setActivePath } from '@/http/storage'
+import { tokenDecode } from '@/utils'
 
 const activePath = ref<string>('doctorLayout')
 const route = useRoute()
 const router = useRouter()
-
+const userName = ref<string>('')
 const menuClick = (path: string) => {
   activePath.value = path
   setActivePath(path)
   if (route.path !== '/' + path) router.push(path)
 }
+onMounted(() => {
+  const data = tokenDecode(getToken() as string) as any
+  userName.value = data.dName
+})
 </script>
 
 <template>
   <div class="doctor-main-x">
-    <AdminHeader username="ccxs" />
+    <AdminHeader :username="userName" type="医生" />
 
     <el-container>
       <el-aside width="200px">

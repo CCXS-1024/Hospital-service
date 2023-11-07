@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Login from '../views/Login.vue'
 import { getToken } from '@/http/storage'
-import Admin from '@/views/AdminMain.vue'
+import Admin from '@/views/Admin/AdminMain.vue'
 //病人模块组件
 import Patient from '@/views/Patient/PatientMain.vue'
 import PatientLayout from '@/views/Patient/subviews/PatientLayout.vue'
@@ -16,6 +16,10 @@ import DoctorLayout from '@/views/Doctor/subviews/DoctorLayout.vue'
 import DoctorOrder from '@/views/Doctor/subviews/DoctorOrder.vue'
 import DealOrder from '@/views/Doctor/subviews/DealOrder.vue'
 import DoctorHisOrder from '@/views/Doctor/subviews/DoctorHisOrder.vue'
+
+// admin
+import AdminLayOut from '@/views/Admin/subviews/AdminLayOut.vue'
+import DoctorList from '@/views/Admin/subviews/DoctorList.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -32,6 +36,20 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       reqireAuth: true,
     },
+    children: [
+      {
+        path: '/admin',
+        redirect: '/adminIndex',
+      },
+      {
+        path: '/adminIndex',
+        component: AdminLayOut,
+      },
+      {
+        path: '/doctorList',
+        component: DoctorList,
+      },
+    ],
   },
   {
     path: '/patient',

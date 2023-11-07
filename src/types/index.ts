@@ -67,3 +67,17 @@ export interface DoctorHisItem {
   oPriceState: string
   oState: number
 }
+
+export interface FormType {
+  dId: number | null
+  dPassword: string
+  dName: string
+  dGender: string
+  dPost: string
+  dSection: string
+  dCard: string
+  dPhone: string
+  dEmail: string
+  dPrice: string
+  dIntroduction: string
+}

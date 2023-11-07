@@ -7,6 +7,7 @@ import type {
   DrugItem,
   CheckItem,
   DoctorHisItem,
+  FormType,
 } from '@/types'
 interface axiosConfig<T> {
   data: {
@@ -255,3 +256,47 @@ export const requestOrders = (
     },
   })
 }
+
+// admin
+export const loginAdmin = (data: any) => instance.post('admin/login', data)
+
+export const requestDoctors = (
+  pageNumber: number,
+  size: number,
+  query: string
+): Promise<axiosConfig<any>> =>
+  instance.get('admin/findAllDoctors', {
+    params: {
+      pageNumber,
+      size,
+      query,
+    },
+  })
+
+export const addDoctor = (data: any): Promise<axiosConfig<any>> =>
+  instance.get('admin/addDoctor', {
+    params: {
+      ...data,
+    },
+  })
+
+export const findDoctorById = (dId: number): Promise<axiosConfig<FormType>> =>
+  instance.get('admin/findDoctor', {
+    params: {
+      dId,
+    },
+  })
+
+export const updateDoctor = (data: any) =>
+  instance.get('admin/modifyDoctor', {
+    params: {
+      ...data,
+    },
+  })
+
+export const deleteDoctor = (dId: number) =>
+  instance.get('admin/deleteDoctor', {
+    params: {
+      dId,
+    },
+  })

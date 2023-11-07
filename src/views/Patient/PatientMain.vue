@@ -19,7 +19,6 @@ const menuClick = (path: string) => {
   activePath.value = path
   setActivePath(path)
   if (route.path !== '/' + path) router.push(path)
-  console.log(path)
 }
 
 activePath.value = getActivePath() as string

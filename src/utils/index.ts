@@ -1,9 +1,7 @@
 import jwtDecode from 'jwt-decode'
 
-interface Token {
-  pId: string
-}
 
-export const tokenDecode = (token: string): Token | undefined => {
+
+export const tokenDecode = (token: string): any => {
   if (token !== null) return jwtDecode(token)
 }
