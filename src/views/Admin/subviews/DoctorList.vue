@@ -247,10 +247,9 @@ onMounted(() => {
     <!-- input  -->
     <el-row :gutter="20">
       <el-col :span="8">
-        <el-input v-model="searchValue">
+        <el-input v-model="searchValue" placeholder="请输入医生姓名"  >
           <template #append>
             <el-button
-              v-module="searchValue"
               slot="append"
               :icon="Search"
               @click="searchDoctor"></el-button>
@@ -273,8 +272,7 @@ onMounted(() => {
         </el-table-column>
         <el-table-column prop="dSection" label="科室" width="100">
         </el-table-column>
-        <el-table-column prop="dCard" label="证件号" width="180">
-        </el-table-column>
+
         <el-table-column prop="dPhone" label="手机号" width="150">
         </el-table-column>
         <el-table-column prop="dEmail" label="邮箱" width="170">

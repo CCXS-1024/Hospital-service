@@ -389,7 +389,6 @@ const handleIsShow = () => {
   width: 450px;
   height: 390px;
   background: white;
-  //绝对定位，相对于最左上角来说
   position: absolute;
   left: 70%;
   top: 50%;

@@ -20,6 +20,7 @@ import DoctorHisOrder from '@/views/Doctor/subviews/DoctorHisOrder.vue'
 // admin
 import AdminLayOut from '@/views/Admin/subviews/AdminLayOut.vue'
 import DoctorList from '@/views/Admin/subviews/DoctorList.vue'
+import PatientList from '@/views/Admin/subviews/PatientList.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -48,6 +49,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/doctorList',
         component: DoctorList,
+      },
+      {
+        path: '/patientlist',
+        component: PatientList,
       },
     ],
   },

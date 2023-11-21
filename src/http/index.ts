@@ -300,3 +300,24 @@ export const deleteDoctor = (dId: number) =>
       dId,
     },
   })
+
+export const requestAllPatientList = (
+  size: number,
+  pageNumber: number,
+  query: string
+): Promise<axiosConfig<any>> =>
+  instance.get('admin/findAllPatients', {
+    params: {
+      size,
+      pageNumber,
+      query,
+    },
+  })
+
+export const delePatient = (pId: number): Promise<axiosConfig<any>> => {
+  return instance.get('admin/deletePatient', {
+    params: {
+      pId,
+    },
+  })
+}
