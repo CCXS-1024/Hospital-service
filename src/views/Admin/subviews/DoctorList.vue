@@ -447,7 +447,5 @@ onMounted(() => {
 </template>
 
 <style>
-.table-x {
-  margin-top: 20px;
-}
+
 </style>

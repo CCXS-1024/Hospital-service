@@ -27,21 +27,23 @@ const getAllPatientList = async (
 }
 
 const deleteDialog = (id: number) => {
-  ElMessageBox.confirm('确定删除用户信息').then(async () => {
-    console.log('删除成功')
-    const { data } = await delePatient(id)
-    if (data.status !== 200)
-      return ElMessage({
-        type: 'error',
-        message: '删除失败',
-      })
+  ElMessageBox.confirm('确定删除用户信息')
+    .then(async () => {
+      console.log('删除成功')
+      const { data } = await delePatient(id)
+      if (data.status !== 200)
+        return ElMessage({
+          type: 'error',
+          message: '删除失败',
+        })
 
-    ElMessage({
-      type: 'success',
-      message: '删除成功',
+      ElMessage({
+        type: 'success',
+        message: '删除成功',
+      })
+      getAllPatientList(size.value, pageNumber.value, searchQuery.value)
     })
-    getAllPatientList(size.value, pageNumber.value, searchQuery.value)
-  })
+    .catch(() => {})
 }
 
 onMounted(() => {

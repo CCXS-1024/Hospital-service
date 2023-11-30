@@ -81,3 +81,66 @@ export interface FormType {
   dPrice: string
   dIntroduction: string
 }
+
+export interface AdminOrder {
+  oId: number
+  pId: number
+  oStart: string
+  oEnd: string
+  oRecord: string
+  oDrug: string
+  oCheck: string
+  oTotalPrice: string
+  oPriceState: number
+  oState: number
+}
+
+export interface PageOrderList {
+  data: {
+    data: {
+      pageNumber: number
+      pages: number
+      total: number
+      orders: AdminOrder[]
+    }
+    status: number
+  }
+}
+
+export interface pageDrugList {
+  data: {
+    data: {
+      pageNumber: number
+      pages: number
+      total: number
+      drugs: DrugItem[]
+    }
+    status: number
+  }
+}
+
+export interface DrugForm {
+  drId: number | null
+  drName: string
+  drNumber: number | null
+  drUnit: string
+  drPrice: string
+  drPublisher: string
+}
+export interface CheckItem {
+  chId: number
+  chName: string
+  chPrice: number
+}
+
+export interface PageCheckList {
+  data: {
+    data: {
+      pageNumber: number
+      pages: number
+      total: number
+      checks: CheckItem[]
+    }
+    status: number
+  }
+}

@@ -8,6 +8,10 @@ import type {
   CheckItem,
   DoctorHisItem,
   FormType,
+  PageOrderList,
+  pageDrugList,
+  DrugForm,
+  PageCheckList,
 } from '@/types'
 interface axiosConfig<T> {
   data: {
@@ -321,3 +325,95 @@ export const delePatient = (pId: number): Promise<axiosConfig<any>> => {
     },
   })
 }
+
+export const getAllAdminOrderList = (
+  size: number,
+  pageNumber: number,
+  query: string
+): Promise<PageOrderList> => {
+  return instance.get('admin/findAllOrders', {
+    params: {
+      size,
+      pageNumber,
+      query,
+    },
+  })
+}
+
+export const deleteOrderList = (oId: number): Promise<axiosConfig<null>> =>
+  instance.get('admin/deleteOrder', {
+    params: {
+      oId,
+    },
+  })
+
+export const findAllList = (
+  size: number,
+  pageNumber: number,
+  query: string
+): Promise<pageDrugList> =>
+  instance.get('drug/findAllDrugs', {
+    params: {
+      size,
+      pageNumber,
+      query,
+    },
+  })
+
+export const addDrugItem = (
+  drId: number,
+  drName: string,
+  drNumber: number,
+  drUnit: string,
+  drPrice: string,
+  drPublisher: string
+) =>
+  instance.get('drug/addDrug', {
+    params: {
+      drId,
+      drName,
+      drNumber,
+      drUnit,
+      drPrice,
+      drPublisher,
+    },
+  })
+
+export const getDrugItem = (drId: number): Promise<axiosConfig<DrugForm>> =>
+  instance.get('drug/findDrug', {
+    params: {
+      drId,
+    },
+  })
+
+export const updateDrugItem = (
+  drId: number,
+  drName: string,
+  drNumber: number,
+  drUnit: string,
+  drPrice: string,
+  drPublisher: string
+) =>
+  instance.get('drug/modifyDrug', {
+    params: {
+      drId,
+      drName,
+      drNumber,
+      drUnit,
+      drPrice,
+      drPublisher,
+    },
+  })
+
+export const getAllCheckItem = (
+  size: number,
+  pageNumber: number,
+  query: string
+): Promise<PageCheckList> =>
+  instance.get('check/findAllChecks', {
+    params: {
+      size,
+      pageNumber,
+      query,
+    },
+  })
