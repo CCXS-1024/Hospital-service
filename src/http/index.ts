@@ -417,3 +417,43 @@ export const getAllCheckItem = (
       query,
     },
   })
+
+export const addCheckList = (
+  chId: number,
+  chName: string,
+  chPrice: number
+): Promise<axiosConfig<null>> =>
+  instance.get('check/addCheck', {
+    params: {
+      chId,
+      chName,
+      chPrice,
+    },
+  })
+
+export const getCheckItem = (chId: number) =>
+  instance.get('check/findCheck', {
+    params: {
+      chId,
+    },
+  })
+
+export const updateCheckItem = (
+  chId: number,
+  chName: string,
+  chPrice: number
+) =>
+  instance.get('check/modifyCheck', {
+    params: {
+      chId,
+      chName,
+      chPrice,
+    },
+  })
+
+export const deleCheckItem = (chId: number) =>
+  instance.get('check/deleteCheck', {
+    params: {
+      chId,
+    },
+  })

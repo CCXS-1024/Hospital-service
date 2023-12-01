@@ -247,7 +247,7 @@ onMounted(() => {
     <!-- input  -->
     <el-row :gutter="20">
       <el-col :span="8">
-        <el-input v-model="searchValue" placeholder="请输入医生姓名"  >
+        <el-input v-model="searchValue" placeholder="请输入医生姓名">
           <template #append>
             <el-button
               slot="append"
@@ -291,15 +291,15 @@ onMounted(() => {
             <el-button
               style="font-size: 14px"
               type="success"
-              @click="modifyDialog(scope.row.dId)"
-              ><i class="iconfont icon-r-edit" style="font-size: 22px"></i
-            ></el-button>
+              @click="modifyDialog(scope.row.dId)">
+              修改
+            </el-button>
             <el-button
               style="font-size: 14px"
               type="danger"
-              @click="deleteDialog(scope.row.dId)"
-              ><i class="iconfont icon-r-delete" style="font-size: 22px"></i
-            ></el-button>
+              @click="deleteDialog(scope.row.dId)">
+              删除
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -446,6 +446,4 @@ onMounted(() => {
   </el-dialog>
 </template>
 
-<style>
-
-</style>
+<style></style>

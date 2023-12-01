@@ -128,9 +128,9 @@ export interface DrugForm {
   drPublisher: string
 }
 export interface CheckItem {
-  chId: number
+  chId: number 
   chName: string
-  chPrice: number
+  chPrice: number 
 }
 
 export interface PageCheckList {

@@ -24,6 +24,8 @@ import PatientList from '@/views/Admin/subviews/PatientList.vue'
 import AdminOrderList from '@/views/Admin/subviews/AminOrderList.vue'
 import AdmindrugList from '@/views/Admin/subviews/AdmindrugList.vue'
 import AdminCheckList from '@/views/Admin/subviews/AdminCheckList.vue'
+import AdminBedList from '@/views/Admin/subviews/AdminBedList.vue'
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -67,6 +69,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/checkList',
         component: AdminCheckList,
+      },
+      {
+        path: '/bedList',
+        component: AdminBedList,
       },
     ],
   },

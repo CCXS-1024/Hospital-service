@@ -96,8 +96,10 @@ const search = () => {
         </el-table-column>
         <el-table-column label="操作">
           <template #default="scope">
-            <el-button type="danger" @click="deleteDialog(scope.row.pId as any)"
-              ><i class="iconfont icon-r-delete" style="font-size: 22px"></i>
+            <el-button
+              type="danger"
+              @click="deleteDialog(scope.row.pId as any)">
+              删除
             </el-button>
           </template>
         </el-table-column>
